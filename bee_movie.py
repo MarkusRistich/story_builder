@@ -1,7 +1,7 @@
-# Define a script for an impeccable apocalyptic wasteland
+# Define a script for an beautiful insect-based love story
 from base import Scene, Act, Character
 class Script():
-    title = "Fury Road"
+    title = "Bee Movie"
 
     def create_acts(self):
         self.act_one()
