@@ -4,13 +4,17 @@ class Act(object):
     """
 
     self._characters = []  # list of Characters
+    self.scenes = []  # list of Scenes
     self._current_scene = None
 
-    def __init__(self, characters):
+    def __init__(self, characters, scenes):
+        self.scenes = []
         self._characters = characters
 
-    def begin_scene(self, scene_name):
+    def define_scenes(self):
 
+    def begin_scene(self, scene_name):
+        self._current_scene = self.scenes[scene_name]
         self._current_scene.open(characters)
         self._current_scene.enter(location, characters)
 
@@ -27,7 +31,7 @@ class Scene():
         Defines a specific beat of action, in a certain location.
     """
     self._location = None
-    self._characters = None
+    self.is_active = False
 
     def __init__(self, characters, location):
         # in fair verona
@@ -39,10 +43,14 @@ class Scene():
         for char in self._characters:
             char.in_scene = True
 
+        self.is_active = True
+
     def close(self, characters):
         # bury their parent's strife
         for char in self._characters:
             char.in_scene = False
+
+        self.is_active = False
 
 class Character():
     """
