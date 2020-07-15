@@ -3,9 +3,9 @@ class Act(object):
         Defines a general plot section within a story.
     """
 
-    self._characters = []  # list of Characters
-    self.scenes = []  # list of Scenes
-    self._current_scene = None
+    _characters = []  # list of Characters
+    scenes = []  # list of Scenes
+    _current_scene = None
 
     def __init__(self, characters, scenes):
         self.scenes = []
@@ -15,8 +15,7 @@ class Act(object):
 
     def begin_scene(self, scene_name):
         self._current_scene = self.scenes[scene_name]
-        self._current_scene.open(characters)
-        self._current_scene.enter(location, characters)
+        self._current_scene.open()
 
     def end_scene(self):
         self._current_scene.close()
@@ -30,8 +29,8 @@ class Scene():
     """
         Defines a specific beat of action, in a certain location.
     """
-    self._location = None
-    self.is_active = False
+    _location = None
+    is_active = False
 
     def __init__(self, characters, location):
         # in fair verona
@@ -56,5 +55,5 @@ class Character():
     """
         Defines a character and their status within the piece.
     """
-    self.name = ""
-    self.in_scene = False
+    name = ""
+    in_scene = False
